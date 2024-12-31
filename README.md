@@ -6,7 +6,7 @@
 ![PouchDB](https://img.shields.io/badge/PouchDB-7.x-orange)
 ![Node.js](https://img.shields.io/badge/Node.js-14.x-brightgreen)
 
-![PouchDB Admin Interface](https://raw.githubusercontent.com/sousaakira/pouchdb-admin/screenshots/interface.png)
+![PouchDB Admin Interface](https://raw.githubusercontent.com/sousaakira/pouchdb-admin/refs/heads/main/screenshots/interface.png)
 
 
 ## Português
