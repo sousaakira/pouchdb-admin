@@ -1,6 +1,7 @@
 node_modules
 dist
 src/db_registry.txt
+pouch__all_dbs__
 
 # Ignore all files in the .env file
 .env

@@ -1,14 +1,21 @@
 {
   "name": "pouchdb-admin",
   "version": "1.0.0",
-  "description": "",
+  "description": "PouchDB Admin Interface",
   "main": "index.js",
   "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": ["pouchdb", "admin", "interface", "pouchdb-admin", "pouchdb-admin-interface"],
+  "author": "Akira Sousa",
+  "repository": "https://github.com/sousaakira/pouchdb-admin",
+  "homepage": "https://github.com/sousaakira/pouchdb-admin",
+  "bugs": {
+    "url": "https://github.com/sousaakira/pouchdb-admin/issues"
+  },
+  "license": "MIT",
   "dependencies": {
     "ejs": "^3.1.10",
     "express": "^4.21.2",
