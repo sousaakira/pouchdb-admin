@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PouchDB Admin - <%= name %></title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .document {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        .document pre {
+            background: #f5f5f5;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        .btn {
+            padding: 5px 10px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn:hover {
+            background: #45a049;
+        }
+        .btn-danger {
+            background: #dc3545;
+        }
+        .btn-danger:hover {
+            background: #c82333;
+        }
+        .btn-warning {
+            background: #ffc107;
+            color: #000;
+        }
+        .btn-warning:hover {
+            background: #e0a800;
+        }
+        .actions {
+            margin-top: 10px;
+            display: flex;
+            gap: 5px;
+        }
+        .info {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Banco de Dados: <%= name %></h1>
+    
+    <div class="info">
+        <h3>Informações do Banco</h3>
+        <p>Documentos: <%= info.doc_count %></p>
+        <p>Tamanho: <%= Math.round(info.disk_size / 1024) %> KB</p>
+    </div>
+
+    <a href="/" class="btn">Voltar</a>
+    <a href="/database/<%= name %>/doc/new" class="btn" style="margin-left: 10px;">Novo Documento</a>
+
+    <h2>Documentos</h2>
+    <% if (docs.length === 0) { %>
+        <p>Nenhum documento encontrado.</p>
+    <% } else { %>
+        <% docs.forEach(function(row) { %>
+            <div class="document">
+                <strong>ID: <%= row.id %></strong>
+                <pre><%= JSON.stringify(row.doc, null, 2) %></pre>
+                <div class="actions">
+                    <a href="/database/<%= name %>/doc/<%= row.id %>/edit" class="btn btn-warning">Editar</a>
+                    <form action="/database/<%= name %>/doc/<%= row.id %>/delete" method="POST" style="display: inline;">
+                        <button type="submit" class="btn btn-danger" 
+                                onclick="return confirm('Tem certeza que deseja deletar este documento?')">
+                            Deletar
+                        </button>
+                    </form>
+                </div>
+            </div>
+        <% }); %>
+
+        <div class="pagination" style="margin-top: 20px;">
+            <% if (hasPrevPage) { %>
+                <a href="/database/<%= name %>?page=<%= currentPage - 1 %>" class="btn">Anterior</a>
+            <% } %>
+            
+            <span style="margin: 0 10px;">
+                Página <%= currentPage %> de <%= totalPages %>
+            </span>
+
+            <% if (hasNextPage) { %>
+                <a href="/database/<%= name %>?page=<%= currentPage + 1 %>" class="btn">Próximo</a>
+            <% } %>
+        </div>
+    <% } %>
+</body>
+</html> 

@@ -1,0 +1,9 @@
+node_modules
+dist
+src/db_registry.txt
+
+# Ignore all files in the .env file
+.env
+.vscode
+.vscode-upload.json
+package-lock.json
